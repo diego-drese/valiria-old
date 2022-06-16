@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": "^7.2|^8.0",
-        "illuminate/support": "^6.0|^7.0",
+        "illuminate/support": "^6.0|^7.0|^9.17",
         "fruitcake/laravel-cors": "^1.0",
         "laravel/sanctum": "^2.0",
         "laravel/tinker": "^2.0"
