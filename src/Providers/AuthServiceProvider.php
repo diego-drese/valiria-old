@@ -10,7 +10,8 @@ use Valiria\Auth\Models\Permission;
 use Valiria\Auth\Services\AbilitiesService;
 use PhpParser\Node\Expr\Cast\Bool_;
 
-class AuthServiceProvider extends ServiceProvider {
+class AuthServiceProvider extends ServiceProvide
+{
     private const ROOT_PATH = __DIR__ . '/../..';
 
     /**
@@ -27,7 +28,6 @@ class AuthServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-
         $this->loadMigrationsFrom(self::ROOT_PATH . '/database/migrations');
         $this->loadFactoriesFrom(self::ROOT_PATH . '/database/factories');
         $this->registerPermissions();
@@ -40,7 +40,8 @@ class AuthServiceProvider extends ServiceProvider {
      * Check for database connection.
      * @return bool
      */
-    private function checkConnectionStatus(): bool {
+    private function checkConnectionStatus(): bool
+    {
         try {
             DB::connection()->getPdo();
             return true;
@@ -49,14 +50,18 @@ class AuthServiceProvider extends ServiceProvider {
         }
     }
 
-    protected function registerPermissions() {
+    protected function registerPermissions()
+    {
         try {
             if ($this->checkConnectionStatus()) {
                 if (Schema::hasTable('permissions')) {
                     Permission::all()->map(function ($permission) {
-                        Gate::define($permission->verb . '|' . $permission->uri, function ($user) use ($permission) {
-                            return $user->existPermission($permission);
-                        });
+                        Gate::define(
+                            $permission->verb . '|' . $permission->uri,
+                            function ($user) use ($permission) {
+                                return $user->existPermission($permission);
+                            }
+                        );
                     });
                 }
             }
@@ -65,11 +70,16 @@ class AuthServiceProvider extends ServiceProvider {
         }
     }
 
-    protected function bootForConsole() {
-    
-        $permissionSeederPath = 'seeds/PermissionsTableSeeder.php';
-        $this->publishes([
-            self::ROOT_PATH . '/database/' . $permissionSeederPath => database_path($permissionSeederPath),
-        ], 'auth-seeds');
+    protected function bootForConsole()
+    {
+        $permissionSeederPath = 'seeders/PermissionsTableSeeder.php';
+        $this->publishes(
+            [
+                self::ROOT_PATH .
+                '/database/' .
+                $permissionSeederPath => database_path($permissionSeederPath),
+            ],
+            'auth-seeds'
+        );
     }
 }
