@@ -5,7 +5,7 @@ The middleware `val.acl` check if auth user is authorized to access the route an
 the same name of the route within any role he has
 
 ## The name Valíria is based on Game Of Thrones
-Only the greatest smiths can reforge swords from existing Valyrian steel, and the secret of creating such an alloy was apparently lost with Valyria, making these remaining weapons highly prized and extremely rare. Valyrian steel blades in Westeros are precious relics of noble houses, each with its own name and history.
+Only the greatest smiths can reforge swords from existing Valirian steel, and the secret of creating such an alloy was apparently lost with Valíria, making these remaining weapons highly prized and extremely rare. Valirian steel blades in Westeros are precious relics of noble houses, each with its own name and history.
 
 ## Install
 * Install packaqe with composer `composer require diego-drese/valiria`
