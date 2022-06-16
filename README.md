@@ -28,13 +28,14 @@ use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
     \Illuminate\Routing\Middleware\SubstituteBindings::class,
 ],
 ```
-* Add trait in  User model
+* Add trait in  User model, check if model User exists in app\Model\User.php
 ```bash
 use Laravel\Sanctum\HasApiTokens;
+use Valiria\Traits\ValiriaUser;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, ValiriaUser;
 }
 ```
 
