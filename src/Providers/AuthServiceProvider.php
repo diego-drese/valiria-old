@@ -10,7 +10,7 @@ use Valiria\Auth\Models\Permission;
 use Valiria\Auth\Services\AbilitiesService;
 use PhpParser\Node\Expr\Cast\Bool_;
 
-class AuthServiceProvider extends ServiceProvide
+class AuthServiceProvider extends ServiceProvider
 {
     private const ROOT_PATH = __DIR__ . '/../..';
 
