@@ -12,7 +12,7 @@ class Authorize {
     public function handle(Request $request, Closure $next) {
         $auth = app('auth');
         $method = $request->method();
-        $uri = $request->method();
+        $uri = $request->route()->uri;
         if (!$auth) {
             return response()->json(['message' => 'User is not logged in.'], 401);
         }
