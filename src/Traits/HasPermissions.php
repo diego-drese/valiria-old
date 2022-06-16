@@ -1,10 +1,10 @@
 <?php
 
-namespace Valiria\Auth\Traits;
+namespace Valiria\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Valiria\Auth\Models\Permission;
-use Valiria\Auth\Models\Role;
+use Valiria\Models\Permission;
+use Valiria\Models\Role;
 
 trait HasPermissions
 {
@@ -23,7 +23,6 @@ trait HasPermissions
      */
     public function hasPermission(Permission $permission): bool
     {
-
         return $this->permissions->contains($permission);
     }
 
@@ -33,9 +32,10 @@ trait HasPermissions
      */
     public function existPermission(Permission $permission): bool
     {
-
-        return $this->roles->filter(function (Role $role) use ($permission) {
-            return $role->hasPermission($permission);
-        })->isNotEmpty();
+        return $this->roles
+            ->filter(function (Role $role) use ($permission) {
+                return $role->hasPermission($permission);
+            })
+            ->isNotEmpty();
     }
 }

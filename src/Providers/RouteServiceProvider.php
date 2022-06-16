@@ -1,11 +1,12 @@
 <?php
-namespace Valiria\Auth\Providers;
+namespace Valiria\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Valiria\Auth\Http\Middleware\Authorize;
+use Valiria\Http\Middleware\Authorize;
 
-class RouteServiceProvider extends ServiceProvider {
+class RouteServiceProvider extends ServiceProvider
+{
     /**
      * This namespace is applied to your controller routes.
      *
@@ -14,16 +15,15 @@ class RouteServiceProvider extends ServiceProvider {
      * @var string
      */
 
-
-    protected $namespace = 'Valiria\Auth\Http\Controllers';
-
+    protected $namespace = 'Valiria\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
      */
-    public function boot(){
+    public function boot()
+    {
         $this->aliasMiddleware('val.acl', Authorize::class);
         parent::boot();
     }
@@ -33,10 +33,10 @@ class RouteServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function map() {
+    public function map()
+    {
         $this->mapApiRoutes();
     }
-
 
     /**
      * Define the "api" routes for the application.
@@ -45,7 +45,8 @@ class RouteServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    protected function mapApiRoutes() {
+    protected function mapApiRoutes()
+    {
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->namespace)

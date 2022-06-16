@@ -1,20 +1,24 @@
 <?php
 
-namespace Valiria\Auth\Traits;
+namespace Valiria\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Valiria\Auth\Models\Permission;
-use Valiria\Auth\Models\Role;
+use Valiria\Models\Permission;
+use Valiria\Models\Role;
 
 trait HasRoles
 {
-
     /**
      * @return BelongsToMany
      */
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+        return $this->belongsToMany(
+            Role::class,
+            'role_user',
+            'user_id',
+            'role_id'
+        );
     }
 
     /**
@@ -25,7 +29,6 @@ trait HasRoles
     {
         return $this->roles->contains($role);
     }
-
 
     /**
      * @param array $attributes
@@ -42,7 +45,6 @@ trait HasRoles
         $model = static::query()->create($attributes);
 
         if ($roles) {
-
             $model->roles()->attach($roles);
         }
 

@@ -16,14 +16,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Valiria\\Auth\\": "src/"
+            "Valiria\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Valiria\\Auth\\Providers\\AuthServiceProvider",
-                "Valiria\\Auth\\Providers\\RouteServiceProvider"
+                "Valiria\\Providers\\AuthServiceProvider",
+                "Valiria\\Providers\\RouteServiceProvider"
             ]
         }
 },

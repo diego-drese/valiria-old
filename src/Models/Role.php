@@ -4,8 +4,8 @@ namespace Valiria\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Arr;
-use Valiria\Auth\Traits\HasPermissions;
-use Valiria\Auth\Traits\HasRoles;
+use Valiria\Traits\HasPermissions;
+use Valiria\Traits\HasRoles;
 
 class Role extends Model
 {

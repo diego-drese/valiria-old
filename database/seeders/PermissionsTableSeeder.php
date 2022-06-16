@@ -1,9 +1,9 @@
 <?php
 namespace Database\Seeders;
 
-use Valiria\Auth\Models\Permission;
-use Valiria\Auth\Models\Role;
-use Valiria\Auth\Models\User;
+use Valiria\Models\Permission;
+use Valiria\Models\Role;
+use Valiria\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route as RouteFacade;
