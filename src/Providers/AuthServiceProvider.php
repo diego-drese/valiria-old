@@ -1,13 +1,11 @@
 <?php
 namespace Valiria\Providers;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Valiria\Models\Permission;
-use PhpParser\Node\Expr\Cast\Bool_;
 
 class AuthServiceProvider extends ServiceProvider
 {

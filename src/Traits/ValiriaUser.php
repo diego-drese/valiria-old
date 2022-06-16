@@ -1,17 +1,15 @@
 <?php
-namespace Valiria\Models;
+
+namespace Valiria\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
+use Valiria\Models\Permission;
+use Valiria\Models\Role;
 
-class User extends Authenticatable
+trait ValiriaUser
 {
-    protected $guarded = ['id'];
-    protected $hidden = ['password', 'remember_token'];
-
     public function setPasswordAttribute($password)
     {
         if (!empty($password)) {

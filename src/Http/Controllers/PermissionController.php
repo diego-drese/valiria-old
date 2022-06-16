@@ -2,11 +2,9 @@
 namespace Valiria\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route as RouteFacade;
 use Valiria\Http\Resources\PermissionCollection;
 use Valiria\Http\Resources\PermissionResource;
 use Valiria\Models\Permission;
-use Valiria\Http\Controllers\Controller;
 
 class PermissionController extends Controller
 {

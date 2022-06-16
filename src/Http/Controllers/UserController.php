@@ -4,9 +4,7 @@ namespace Valiria\Http\Controllers;
 use Illuminate\Http\Request;
 use Valiria\Http\Resources\UserCollection;
 use Valiria\Http\Resources\UserResource;
-use Valiria\Models\Role;
-use Valiria\Models\User;
-use Valiria\Http\Controllers\Controller;
+use App\Models\User;
 
 class UserController extends Controller
 {

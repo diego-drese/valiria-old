@@ -3,7 +3,6 @@ namespace Valiria\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Arr;
 use Valiria\Traits\HasPermissions;
 use Valiria\Traits\HasRoles;
 

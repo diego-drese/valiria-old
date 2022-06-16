@@ -1,13 +1,10 @@
 <?php
 namespace Valiria\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Valiria\Http\Controllers\Controller;
 use Valiria\Http\Resources\RoleCollection;
 use Valiria\Http\Resources\RoleResource;
 use Valiria\Models\Role;
-use Valiria\Models\User;
 
 class RoleController extends Controller
 {

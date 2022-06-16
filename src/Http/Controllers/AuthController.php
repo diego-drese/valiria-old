@@ -1,8 +1,6 @@
 <?php
 namespace Valiria\Http\Controllers;
 
-use App\User;
-use Valiria\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

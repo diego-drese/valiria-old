@@ -1,9 +1,6 @@
 <?php
 use Illuminate\Http\Request;
 
-use App\User;
-use Illuminate\Support\Facades\Hash;
-
 Route::post('login', 'AuthController@login');
 
 Route::group(['middleware' => ['auth:sanctum','val.acl']], function () {
