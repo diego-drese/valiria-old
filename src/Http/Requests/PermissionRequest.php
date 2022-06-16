@@ -1,5 +1,5 @@
 <?php
-namespace Valiria\Auth\Http\Requests;
+namespace Valiria\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

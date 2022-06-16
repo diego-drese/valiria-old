@@ -1,5 +1,5 @@
 <?php
-namespace Valiria\Auth\Http\Middleware;
+namespace Valiria\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Access\AuthorizationException;

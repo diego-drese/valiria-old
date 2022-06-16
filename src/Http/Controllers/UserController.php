@@ -1,34 +1,39 @@
 <?php
-namespace Valiria\Auth\Http\Controllers;
+namespace Valiria\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Valiria\Auth\Http\Resources\UserCollection;
-use Valiria\Auth\Http\Resources\UserResource;
-use Valiria\Auth\Models\Role;
-use Valiria\Auth\Models\User;
+use Valiria\Http\Resources\UserCollection;
+use Valiria\Http\Resources\UserResource;
+use Valiria\Models\Role;
+use Valiria\Models\User;
 use Valiria\Http\Controllers\Controller;
 
-class UserController extends Controller {
-
-    public function index() {
+class UserController extends Controller
+{
+    public function index()
+    {
         $limit = request()->has('limit') ? request()->get('limit') : null;
         return new UserCollection(User::paginate($limit));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         return new UserResource(User::create($request->all()));
     }
 
-    public function show(User $user) {
+    public function show(User $user)
+    {
         return new UserResource($user);
     }
 
-    public function update(Request $request, User $user) {
+    public function update(Request $request, User $user)
+    {
         $user->update($request->all());
         return new UserResource($user);
     }
 
-    public function destroy(User $user) {
+    public function destroy(User $user)
+    {
         $user->delete();
         return response()->json(null, 204);
     }

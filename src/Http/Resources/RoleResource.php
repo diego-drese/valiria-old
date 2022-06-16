@@ -1,5 +1,5 @@
 <?php
-namespace Valiria\Auth\Http\Resources;
+namespace Valiria\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

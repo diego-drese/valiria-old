@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Auth\Models;
+namespace Valiria\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -8,14 +7,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
-class User extends Authenticatable {
-
+class User extends Authenticatable
+{
     protected $guarded = ['id'];
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
-    public function setPasswordAttribute($password) {
+    public function setPasswordAttribute($password)
+    {
         if (!empty($password)) {
             $this->attributes['password'] = Hash::make($password);
         }
@@ -24,15 +22,22 @@ class User extends Authenticatable {
     /**
      * @return BelongsToMany
      */
-    public function roles(): BelongsToMany {
-        return $this->belongsToMany(Role::class,'role_user','user_id','role_id');
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Role::class,
+            'role_user',
+            'user_id',
+            'role_id'
+        );
     }
 
     /**
      * @param  Role $role
      * @return bool
      */
-    public function hasRole(Role $role): bool {
+    public function hasRole(Role $role): bool
+    {
         return $this->roles->contains($role);
     }
 
@@ -40,20 +45,22 @@ class User extends Authenticatable {
      * @param  Permission $permission
      * @return bool
      */
-    public function hasPermission(Permission $permission): bool {
-        return $this->roles->each(function (Role $role) use ($permission) {
-            return $role->hasPermission($permission);
-        })->isNotEmpty();
+    public function hasPermission(Permission $permission): bool
+    {
+        return $this->roles
+            ->each(function (Role $role) use ($permission) {
+                return $role->hasPermission($permission);
+            })
+            ->isNotEmpty();
     }
-
-
 
     /**
      * @param array $attributes
      * @return Builder|Model
      */
-    public static function create(array $attributes = []) {
-        $roles =$attributes['roles'] ?? null;
+    public static function create(array $attributes = [])
+    {
+        $roles = $attributes['roles'] ?? null;
 
         if ($roles) {
             unset($attributes['roles']);
@@ -62,7 +69,6 @@ class User extends Authenticatable {
         $model = static::query()->create($attributes);
 
         if ($roles) {
-
             $model->roles()->attach($roles);
         }
 
@@ -74,8 +80,9 @@ class User extends Authenticatable {
      * @param array $options
      * @return bool
      */
-    public function update(array $attributes = [], array $options = []){
-        $roles =$attributes['roles'] ?? null;
+    public function update(array $attributes = [], array $options = [])
+    {
+        $roles = $attributes['roles'] ?? null;
         if ($roles) {
             unset($attributes['roles']);
         }

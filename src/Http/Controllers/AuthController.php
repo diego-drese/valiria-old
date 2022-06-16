@@ -1,5 +1,5 @@
 <?php
-namespace Valiria\Auth\Http\Controllers;
+namespace Valiria\Http\Controllers;
 
 use App\User;
 use Valiria\Http\Controllers\Controller;
