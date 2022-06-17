@@ -3,7 +3,7 @@ namespace Database\Seeders;
 
 use Valiria\Models\Permission;
 use Valiria\Models\Role;
-use Valiria\Models\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route as RouteFacade;
@@ -83,7 +83,7 @@ class PermissionsTableSeeder extends Seeder
      */
     private function shouldIgnore(Route $route): bool
     {
-        return !in_array('has.acl', $route->gatherMiddleware()) ||
+        return !in_array('val.acl', $route->gatherMiddleware()) ||
             !$route->uri ||
             !Permission::whereIn('verb', $route->methods)->where(
                 'uri',

@@ -12,8 +12,7 @@ class Permission extends Model
     protected $table = 'permission';
     protected $guarded = ['id'];
 
-    public static function getPermission($verb, $uri)
-    {
+    public static function getPermission($verb, $uri) {
         return self::where('verb', $verb)->where('uri', $uri)->first();
     }
 }

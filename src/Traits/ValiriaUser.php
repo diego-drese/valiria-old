@@ -46,30 +46,24 @@ trait ValiriaUser
     public function hasPermission(Permission $permission): bool
     {
         return $this->roles
-            ->each(function (Role $role) use ($permission) {
+            ->filter(function (Role $role) use ($permission) {
                 return $role->hasPermission($permission);
-            })
-            ->isNotEmpty();
+            })->isNotEmpty();
     }
 
     /**
      * @param array $attributes
      * @return Builder|Model
      */
-    public static function create(array $attributes = [])
-    {
+    public static function create(array $attributes = []) {
         $roles = $attributes['roles'] ?? null;
-
         if ($roles) {
             unset($attributes['roles']);
         }
-
         $model = static::query()->create($attributes);
-
         if ($roles) {
             $model->roles()->attach($roles);
         }
-
         return $model;
     }
 
@@ -78,15 +72,12 @@ trait ValiriaUser
      * @param array $options
      * @return bool
      */
-    public function update(array $attributes = [], array $options = [])
-    {
+    public function update(array $attributes = [], array $options = []) {
         $roles = $attributes['roles'] ?? null;
         if ($roles) {
             unset($attributes['roles']);
         }
-
         $updated = parent::update($attributes, $options);
-
         if ($updated && $roles) {
             $this->roles()->sync($roles);
         }
