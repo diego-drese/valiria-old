@@ -38,4 +38,6 @@ class User extends Authenticatable
     use HasApiTokens, Notifiable, ValiriaUser;
 }
 ```
+## License
 
+The Valiria package is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
